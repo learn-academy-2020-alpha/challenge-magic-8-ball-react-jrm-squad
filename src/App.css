@@ -1,10 +1,81 @@
-body{
+body {
   margin: 1%;
   text-align:center;
   font-family: 'Anton', sans-serif;
   height: 90vh;
+  background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 100%);
+  overflow: hidden;
 }
-h1{
+
+h1 {
   text-decoration: underline;
   font-size: 40px;
+}
+
+input {
+    height: 50px;
+    width: 300px;
+    font-size: 30px;
+    margin: 10px;
+}
+
+button {
+    height: 42px;
+    width: 250px;
+    font-size: 15px;
+    border-radius: 5px;
+    margin: 20px;
+}
+
+#resetBtn {
+    width: 100px;
+}
+
+div > #crystalball {
+    height: 500px;
+    width: 450px;
+}
+
+#crystalball {
+  height: 100%;
+  width: 100%;
+}
+
+#image-container {
+    position: relative;
+}
+
+#answerBox {
+   position: absolute;
+   font-size: 23px;
+   font-weight: bolder;
+   z-index: 1;
+   margin: 0 auto;
+   left: 0;
+   right: 0;
+   text-align: center;
+   top: 40%; /* Adjust this value to move the positioned div up and down */
+   font-family: Arial,sans-serif;
+}
+
+#image-container:hover {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

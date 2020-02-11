@@ -6,17 +6,20 @@ class App extends React.Component {
     super(props)
     this.state = {
       // Add magic 8 ball outcomes to the array
-      answerArray: [],
-      question: ""
+      answerArray: ["For sure", "Definitely Not", "Maybe so", "Why not?", "Good luck!"],
+      question: "",
+      answer: ""
     }
   }
 
   getAnswer = () => {
     // destructures answerArray out of state
     const { answerArray } = this.state
-    // write your code here!
+    // randomize a number to correspond with the array
+
     // Update the return statement below to reflect the outcome of your code.
-    return this.state.question
+    let randomNumber = Math.floor(Math.random() * answerArray.length)
+    return answerArray[randomNumber]
   }
 
   handleChange = (e) => {
@@ -28,24 +31,36 @@ class App extends React.Component {
     // destructures question out of state
     const { question } = this.state
     // calls the getAnswer function and saves the outcome as answer
-    const answer = this.getAnswer()
-    this.setState({ answer: answer })
+    this.setState({ answer: this.getAnswer() })
+  }
+
+  reset = () =>{
+    this.setState({ question: "" })
+    this.setState({ answer: "" })
   }
 
   render(){
     return (
       <div>
-        <h1>Magic 8 Ball</h1>
+        <h1>Magic Crystal Ball</h1>
         <input
           id="inputBox"
           type='text'
+          value={this.state.question}
           onChange={ this.handleChange }
         />
         <br />
         <button onClick={ this.handleSubmit }>
-          Ask the Magic 8 Ball a Question
+          Ask the Crystal Ball a Question
         </button>
-        <p> { this.state.answer } </p>
+        <button id="resetBtn" onClick={ this.reset }>
+          Reset
+        </button>
+        <div id="image-container">
+            <img id="crystalball" src={"http://res.publicdomainfiles.com/pdf_view/83/13939484418677.png"} alt="crystal ball">
+            </img>
+            <p id="answerBox"> { this.state.answer } </p>
+        </div>
       </div>
     )
   }
